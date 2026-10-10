@@ -4,70 +4,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071a3d">
 <title>Lớp 8/14 | THCS Trảng Dài</title>
 <style>
+:root{
+ --navy:#071a3d;--blue:#1769ff;--sky:#55c7ff;
+ --bg:#f3f7ff;--text:#172747;--muted:#687792;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f1f6ff;color:#20304a}
-header{background:linear-gradient(135deg,#0755c9,#168bea);color:white;padding:32px 18px;text-align:center}
-header h1{margin:0;font-size:32px}
-header p{margin:10px 0 0}
-nav{background:white;padding:14px;text-align:center;box-shadow:0 2px 8px #0001}
-nav a{color:#0755c9;text-decoration:none;font-weight:bold;margin:8px;display:inline-block}
-main{max-width:900px;margin:25px auto;padding:0 15px}
-.card{background:white;border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:0 4px 15px #1231}
-h2{color:#0755c9}
-.welcome{text-align:center;padding:30px 15px}
-.btn{display:inline-block;background:#0866d8;color:white;padding:12px 18px;border:0;border-radius:9px;text-decoration:none;cursor:pointer}
-.news{border-top:1px solid #e5eaf2;padding:14px 0}
-.news h3{margin:0 0 8px}
-.news img{max-width:100%;height:auto;border-radius:10px;margin-top:10px}
-footer{text-align:center;background:#063d91;color:white;padding:22px;margin-top:35px}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+.topbar{background:#06132e;color:#dce9ff;text-align:center;
+padding:9px 12px;font-size:12px;letter-spacing:1px}
+nav{position:sticky;top:0;z-index:10;background:#fff;
+box-shadow:0 5px 25px #0a245012}
+.navinner{max-width:1120px;margin:auto;padding:13px 20px;
+display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--navy)}
+.logo{width:47px;height:47px;border-radius:15px;
+display:grid;place-items:center;background:linear-gradient(135deg,#1769ff,#58d1ff);
+color:white;font-size:23px;box-shadow:0 6px 15px #1769ff40}
+.brand small{display:block;font-size:11px;letter-spacing:1px;color:var(--muted);margin-top:3px}
+.links{display:flex;align-items:center;gap:22px;font-size:13px;font-weight:750}
+.links a:hover{color:var(--blue)}
+.admin{background:var(--navy);color:white!important;padding:11px 16px;border-radius:12px}
+.hero{background:linear-gradient(125deg,#071a3d 0%,#103c83 60%,#167be8 100%);
+color:white;overflow:hidden;position:relative}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid #ffffff20;
+border-radius:50%;width:380px;height:380px;right:-100px;top:-170px}
+.hero:after{width:260px;height:260px;right:60px;top:140px}
+.heroinner{max-width:1120px;margin:auto;padding:76px 22px 82px;
+display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:38px;position:relative;z-index:1}
+.eyebrow{display:inline-block;border:1px solid #ffffff45;
+background:#ffffff12;padding:9px 13px;border-radius:30px;font-size:12px}
+h1{font-size:clamp(38px,5.5vw,67px);line-height:1.08;letter-spacing:-2px;margin:22px 0}
+h1 span{color:#77d7ff}
+.lead{font-size:16px;line-height:1.9;color:#dceaff;max-width:520px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;justify-content:center;align-items:center;
+padding:13px 19px;border-radius:13px;font-weight:800;font-size:13px;border:0}
+.primary{background:#fff;color:#0b3272}
+.secondary{color:white;border:1px solid #ffffff55;background:#ffffff0d}
+.heroart{min-height:310px;display:flex;align-items:center;justify-content:center}
+.schoolcard{width:min(100%,370px);padding:24px;border:1px solid #ffffff3b;
+border-radius:28px;background:linear-gradient(145deg,#ffffff25,#ffffff09);
+backdrop-filter:blur(8px);box-shadow:0 30px 70px #00133340;transform:rotate(2deg)}
+.schoolicon{height:185px;border-radius:20px;background:linear-gradient(145deg,#b8eaff,#f3faff);
+display:grid;place-items:center;overflow:hidden}
+.schoolicon svg{width:90%;height:90%}
+.schoolcard h3{font-size:21px;margin:19px 0 5px}
+.schoolcard p{color:#d9e9ff;font-size:13px;margin:0}
+.stats{max-width:1000px;margin:-30px auto 0;position:relative;z-index:2;
+display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 20px}
+.stat{background:white;padding:22px;border-radius:19px;
+box-shadow:0 12px 32px #15386d10;text-align:center}
+.stat strong{display:block;color:var(--blue);font-size:25px}
+.stat span{font-size:12px;color:var(--muted);font-weight:700}
+section.content{max-width:1080px;margin:0 auto;padding:58px 22px 10px}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:23px}
+.kicker{font-size:11px;letter-spacing:2px;color:var(--blue);font-weight:900}
+h2{font-size:clamp(25px,4vw,34px);letter-spacing:-1px;margin:8px 0}
+.desc{color:var(--muted);font-size:14px;line-height:1.8}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:white;border:1px solid #e8eef9;border-radius:19px;overflow:hidden;
+box-shadow:0 7px 25px #18325d08;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 15px 35px #18325d12}
+.thumb{height:150px;display:grid;place-items:center;font-size:47px;
+background:linear-gradient(135deg,#dceaff,#bce9ff)}
+.thumb.purple{background:linear-gradient(135deg,#eee5ff,#cdd6ff)}
+.thumb.yellow{background:linear-gradient(135deg,#fff1c9,#ffdca6)}
+.cardbody{padding:20px}
+.tag{font-size:10px;font-weight:900;letter-spacing:1px;color:var(--blue);
+background:#eaf2ff;padding:7px 9px;border-radius:7px;display:inline-block}
+.card h3{font-size:17px;line-height:1.5;margin:13px 0 8px}
+.card p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}
+.panel{background:white;border:1px solid #e8eef9;border-radius:22px;
+padding:25px;margin-bottom:20px}
+.schedule{width:100%;border-collapse:collapse;font-size:13px}
+.schedule th,.schedule td{text-align:left;padding:14px 10px;border-bottom:1px solid #edf1f8}
+.schedule th{color:var(--blue);background:#f4f8ff}
+.schedule td{color:#4e5d76}
+.quote{background:linear-gradient(120deg,#0b2452,#1769cf);color:white;
+border-radius:23px;padding:30px;margin:45px 0}
+.quote h2{font-size:25px}
+.quote p{color:#d8e8ff;line-height:1.8}
+footer{margin-top:65px;background:#06132e;color:white;padding:36px 22px}
+.footerinner{max-width:1080px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer p{font-size:12px;color:#b8c8e3;line-height:1.8}
+footer strong{font-size:18px}
+@media(max-width:760px){
+ .navinner{padding:11px 14px}.links{gap:12px}.links a:not(.admin){display:none}
+ .heroinner{grid-template-columns:1fr;padding:50px 22px 65px;gap:20px}
+ h1{font-size:43px}.heroart{min-height:250px}
+ .schoolcard{max-width:330px}.schoolicon{height:145px}
+ .stats{gap:8px;padding:0 12px}.stat{padding:16px 5px;border-radius:13px}
+ .stat strong{font-size:21px}.stat span{font-size:10px}
+ section.content{padding:45px 15px 5px}
+ .grid{grid-template-columns:1fr}.thumb{height:170px}
+ .sectionhead{align-items:start;flex-direction:column}
+ .panel{padding:14px;overflow-x:auto}.schedule{min-width:440px}
+}
 </style>
 </head>
 <body>
-<header>
-<h1>🏫 LỚP 8/14</h1>
-<p>TRƯỜNG THCS TRẢNG DÀI</p>
-<p>Đoàn kết – Học tập – Sáng tạo</p>
-</header>
+<div class="topbar">✦ WEBSITE CHÍNH THỨC CỦA TẬP THỂ LỚP 8/14 ✦</div>
+
 <nav>
-<a href="#home">Trang chủ</a>
-<a href="#news">Tin tức</a>
-<a href="#activities">Hoạt động</a>
-<a href="#about">Giới thiệu</a>
+ <div class="navinner">
+  <a class="brand" href="#home">
+   <div class="logo">8/14</div>
+   <div>LỚP 8/14<small>THCS TRẢNG DÀI</small></div>
+  </a>
+  <div class="links">
+   <a href="#news">Tin tức</a>
+   <a href="#activities">Hoạt động</a>
+   <a href="#study">Góc học tập</a>
+   <a class="admin" href="admin.html">🔐 Admin</a>
+  </div>
+ </div>
 </nav>
-<main>
-<section class="card welcome" id="home">
-<h2>Chào mừng đến với lớp 8/14!</h2>
-<p>Nơi lưu giữ những kỷ niệm, chia sẻ tin tức và kết nối các thành viên trong lớp.</p>
-<a class="btn" href="#news">Khám phá tin tức</a>
-</section>
 
-<section class="card" id="news">
-<h2>📰 Tin tức lớp</h2>
-<p>Chào mừng bạn đến với trang tin tức của lớp 8/14.</p>
-<div class="news">
-<h3>🎉 Website lớp 8/14 chính thức khởi tạo</h3>
-<p>Đây sẽ là nơi cập nhật các thông báo, tin tức và những khoảnh khắc đáng nhớ của tập thể lớp.</p>
-<small>Ban quản trị website</small>
+<header class="hero" id="home">
+ <div class="heroinner">
+  <div>
+   <div class="eyebrow">✦ THANH XUÂN CỦA CHÚNG TA</div>
+   <h1>Thanh xuân<br>rực rỡ <span>8/14</span></h1>
+   <p class="lead">Mỗi ngày đến trường là một hành trình mới. Cùng nhau học tập, trưởng thành và viết nên những kỷ niệm đáng nhớ dưới mái trường THCS Trảng Dài.</p>
+   <div class="actions">
+    <a class="btn primary" href="#news">Khám phá lớp mình ↗</a>
+    <a class="btn secondary" href="#activities">Hoạt động lớp</a>
+   </div>
+  </div>
+  <div class="heroart">
+   <div class="schoolcard">
+    <div class="schoolicon">
+     <svg viewBox="0 0 300 200" role="img" aria-label="Minh họa ngôi trường">
+      <circle cx="240" cy="35" r="22" fill="#ffd166"/>
+      <path d="M10 165 Q75 120 140 165 T290 160 V200 H10Z" fill="#7bc99b"/>
+      <path d="M55 87 L150 30 L245 87Z" fill="#1769ff"/>
+      <path d="M70 84 H230 V170 H70Z" fill="#fff"/>
+      <path d="M48 84 H252 V98 H48Z" fill="#0b398c"/>
+      <path d="M132 113 H168 V170 H132Z" fill="#8acbff"/>
+      <g fill="#8acbff"><rect x="85" y="108" width="27" height="24" rx="3"/><rect x="188" y="108" width="27" height="24" rx="3"/><rect x="85" y="143" width="27" height="20" rx="3"/><rect x="188" y="143" width="27" height="20" rx="3"/></g>
+      <path d="M15 165 L30 112 L45 165Z" fill="#24945f"/><path d="M255 165 L270 112 L285 165Z" fill="#24945f"/>
+      <rect x="18" y="160" width="10" height="25" fill="#8b6846"/><rect x="267" y="160" width="10" height="25" fill="#8b6846"/>
+      <path d="M143 30 V8 H157 V30" fill="#1769ff"/><path d="M157 9 L178 16 L157 23Z" fill="#ff6b6b"/>
+     </svg>
+    </div>
+    <h3>Đoàn kết • Học tập • Sáng tạo</h3>
+    <p>Một tập thể – Một hành trình – Nhiều kỷ niệm đẹp.</p>
+   </div>
+  </div>
+ </div>
+</header>
+
+<div class="stats">
+ <div class="stat"><strong>8/14</strong><span>TẬP THỂ LỚP</span></div>
+ <div class="stat"><strong>2026</strong><span>NĂM HỌC</span></div>
+ <div class="stat"><strong>💙</strong><span>ĐOÀN KẾT TIẾN BƯỚC</span></div>
 </div>
+
+<section class="content" id="news">
+ <div class="sectionhead">
+  <div><div class="kicker">CẬP NHẬT MỚI NHẤT</div><h2>Tin tức & thông báo</h2>
+   <p class="desc">Những thông tin nổi bật dành cho các thành viên lớp 8/14.</p></div>
+ </div>
+ <div class="grid">
+  <article class="card"><div class="thumb">📣</div><div class="cardbody">
+   <span class="tag">THÔNG BÁO</span><h3>Chào mừng đến với website lớp 8/14</h3>
+   <p>Nơi cập nhật thông báo, hoạt động và tin tức của tập thể lớp.</p>
+  </div></article>
+  <article class="card"><div class="thumb purple">📚</div><div class="cardbody">
+   <span class="tag">HỌC TẬP</span><h3>Cùng nhau học tốt mỗi ngày</h3>
+   <p>Chia sẻ tài liệu, nhắc lịch học và cùng tiến bộ trong học tập.</p>
+  </div></article>
+  <article class="card"><div class="thumb yellow">🌟</div><div class="cardbody">
+   <span class="tag">TIN LỚP</span><h3>Lưu giữ những kỷ niệm đẹp</h3>
+   <p>Mỗi khoảnh khắc bên bạn bè đều góp phần làm nên thanh xuân.</p>
+  </div></article>
+ </div>
 </section>
 
-<section class="card" id="activities">
-<h2>🎯 Hoạt động lớp</h2>
-<p>Cùng nhau học tập, tham gia hoạt động tập thể và xây dựng một lớp học đoàn kết.</p>
+<section class="content" id="activities">
+ <div class="sectionhead">
+  <div><div class="kicker">CÙNG NHAU TRƯỞNG THÀNH</div><h2>Hoạt động nổi bật</h2>
+  <p class="desc">Học hết mình, chơi hết sức, luôn giúp đỡ và tôn trọng nhau.</p></div>
+ </div>
+ <div class="grid">
+  <article class="card"><div class="thumb">🏫</div><div class="cardbody"><h3>Hoạt động tại trường</h3><p>Cập nhật các hoạt động tập thể và sự kiện của trường.</p></div></article>
+  <article class="card"><div class="thumb purple">🤝</div><div class="cardbody"><h3>Tinh thần đồng đội</h3><p>Đoàn kết, chia sẻ và cùng nhau hoàn thành mọi nhiệm vụ.</p></div></article>
+  <article class="card"><div class="thumb yellow">📸</div><div class="cardbody"><h3>Góc kỷ niệm</h3><p>Nơi lưu giữ những bức ảnh và câu chuyện của lớp.</p></div></article>
+ </div>
 </section>
 
-<section class="card" id="about">
-<h2>💙 Giới thiệu</h2>
-<p><b>Tên lớp:</b> 8/14</p>
-<p><b>Trường:</b> THCS Trảng Dài</p>
-<p><b>Mục tiêu:</b> Đoàn kết, chăm ngoan, học tốt và cùng tiến bộ.</p>
+<section class="content" id="study">
+ <div class="sectionhead">
+  <div><div class="kicker">CHỦ ĐỘNG HỌC TẬP</div><h2>Góc học tập</h2>
+  <p class="desc">Theo dõi lịch học và chuẩn bị bài thật tốt.</p></div>
+ </div>
+ <div class="panel">
+  <h3>📅 Thời khóa biểu</h3>
+  <p class="desc">Thời khóa biểu chính thức sẽ được cập nhật tại đây.</p>
+  <table class="schedule">
+   <thead><tr><th>Ngày</th><th>Buổi sáng</th><th>Buổi chiều</th></tr></thead>
+   <tbody>
+    <tr><td>Thứ Hai</td><td>Chờ cập nhật</td><td>Chờ cập nhật</td></tr>
+    <tr><td>Thứ Ba</td><td>Chờ cập nhật</td><td>Chờ cập nhật</td></tr>
+    <tr><td>Thứ Tư</td><td>Chờ cập nhật</td><td>Chờ cập nhật</td></tr>
+    <tr><td>Thứ Năm</td><td>Chờ cập nhật</td><td>Chờ cập nhật</td></tr>
+    <tr><td>Thứ Sáu</td><td>Chờ cập nhật</td><td>Chờ cập nhật</td></tr>
+   </tbody>
+  </table>
+ </div>
+ <div class="quote">
+  <div class="kicker" style="color:#8bdcff">CHÂM NGÔN LỚP MÌNH</div>
+  <h2>“Một tập thể vững mạnh bắt đầu từ những điều nhỏ bé.”</h2>
+  <p>Cùng cố gắng mỗi ngày, cùng tiến bộ và không bỏ lại ai phía sau.</p>
+ </div>
 </section>
-</main>
-<footer>
-<p>© 2026 Lớp 8/14 – Trường THCS Trảng Dài</p>
-<p>Cùng nhau tạo nên những kỷ niệm đẹp 💙</p>
+
+<footer id="contact">
+ <div class="footerinner">
+  <div><strong>🏫 LỚP 8/14</strong><p>Trường THCS Trảng Dài<br>Đoàn kết – Học tập – Sáng tạo</p></div>
+  <div><strong>Thanh xuân của chúng ta 💙</strong><p>Website kết nối và lưu giữ kỷ niệm tập thể lớp.</p></div>
+ </div>
 </footer>
 </body>
 </html>
